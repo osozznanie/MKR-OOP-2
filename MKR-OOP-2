@@ -1,0 +1,53 @@
+using System;
+
+public class Figures
+{
+    public double X1 { get; set; }
+    public double Y1 { get; set; }
+    public double X2 { get; set; }
+    public double Y2 { get; set; }
+
+    public Figures(double x1, double y1, double x2, double y2)
+    {
+        X1 = x1;
+        Y1 = y1;
+        X2 = x2;
+        Y2 = y2;
+    }
+
+    public double SideLength()
+    {
+        return Math.Sqrt(Math.Pow(X2 - X1, 2) + Math.Pow(Y2 - Y1, 2));
+    }
+}
+
+public class Rhombuses : Figures
+{
+    public Rhombuses(double x1, double y1, double x2, double y2) : base(x1, y1, x2, y2)
+    {
+    }
+
+    public double Area()
+    {
+        return SideLength() * SideLength();
+    }
+
+    public double Perimeter()
+    {
+        return 4 * SideLength();
+    }
+
+    public void PrintData()
+    {
+        Console.WriteLine($"Area: {Area()}, Perimeter: {Perimeter()}");
+    }
+}
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        Rhombuses rhombus = new Rhombuses(0, 0, 5, 5);
+        rhombus.PrintData();
+    }
+}
